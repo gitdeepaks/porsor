@@ -1,0 +1,50 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ai_gradient" x1="0" y1="512" x2="512" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6" />
+      <stop offset="1" stop-color="#8B5CF6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background: A dark, rounded coding environment (Optional: remove this rect for transparent background) -->
+  <rect x="0" y="0" width="512" height="512" rx="120" fill="#0F172A" />
+
+  <!-- The Abstract Box (Sandbox) -->
+  <!-- Represents the container/environment structure -->
+  <path d="M130 150
+           L130 362
+           Q130 392 160 392
+           L300 392"
+        stroke="url(#ai_gradient)"
+        stroke-width="32"
+        stroke-linecap="round"
+        fill="none" />
+
+  <path d="M130 180
+           L352 180
+           Q382 180 382 210
+           L382 280"
+        stroke="url(#ai_gradient)"
+        stroke-width="32"
+        stroke-linecap="round"
+        fill="none"
+        opacity="0.6"/>
+
+  <!-- The Cursor (AI) -->
+  <!-- Designed to look like it is finishing the box/writing the code -->
+  <path d="M280 280
+           L430 430
+           L360 430
+           L340 480
+           L280 280"
+        fill="#FFFFFF"
+        filter="url(#glow)"/>
+
+  <!-- Cursor Inner Accent -->
+  <path d="M305 325 L335 425 L350 390 L400 390 L305 325" fill="url(#ai_gradient)"/>
+
+</svg>

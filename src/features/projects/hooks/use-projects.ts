@@ -40,21 +40,21 @@ export const useCreateProject = () => {
   );
 };
 
-export const useRenameProject = (projectId: Id<"projects">) => {
+export const useRenameProject = () => {
   const { userId } = useAuth();
   return useMutation(api.projects.rename).withOptimisticUpdate(
     (localStorage, args) => {
       const existingProject = localStorage.getQuery(api.projects.getById, {
-        id: projectId,
+        id: args.id,
       });
 
       if (existingProject !== undefined && existingProject !== null) {
         localStorage.getQuery(api.projects.getById, {
-          id: projectId,
+          id: args.id,
         });
         localStorage.setQuery(
           api.projects.getById,
-          { id: projectId },
+          { id: args.id },
           {
             ...existingProject,
             name: args.name,

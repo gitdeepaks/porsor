@@ -9,12 +9,12 @@ import {
   Unauthenticated,
 } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
-import React from "react";
+import type React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthLoadingView } from "@/features/auth/components/authloading-view";
 import { UnauthenticatedView } from "@/features/auth/components/unauthenticated-view";
 
-const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL ?? "");
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (

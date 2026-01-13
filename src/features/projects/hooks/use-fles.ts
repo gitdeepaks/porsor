@@ -8,6 +8,19 @@ interface UseFilesProps {
   enabled?: boolean;
 }
 
+export const useFile = (fileId: Id<"files"> | null) => {
+  return useQuery(api.files.getFile, fileId ? { id: fileId } : "skip");
+};
+
+export const useFilePath = (fileId: Id<"files"> | null) => {
+  return useQuery(api.files.getFilePath, fileId ? { id: fileId } : "skip");
+};
+
+export const useUpdateFile = () => {
+  return useMutation(api.files.updateFile);
+  // TODO: add optimistic mutations
+};
+
 export const useCreateFile = () => {
   return useMutation(api.files.createFile);
 };

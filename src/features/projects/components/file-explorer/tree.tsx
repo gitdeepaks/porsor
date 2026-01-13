@@ -6,6 +6,7 @@ import { CreateInput } from "@/features/projects/components/file-explorer/create
 import { LoadingRow } from "@/features/projects/components/file-explorer/loading-row";
 import { RenameInput } from "@/features/projects/components/file-explorer/rename-input";
 import { TreeItemWrapper } from "@/features/projects/components/file-explorer/tree-item-wrapper";
+import { useEditor } from "@/features/projects/hooks/use-editor";
 import {
   useCreateFile,
   useCreateFolder,
@@ -30,6 +31,9 @@ export const Tree = ({ item, level = 0, projectId }: TreeProps) => {
   const deleteFile = useDeleteFile();
   const createFile = useCreateFile();
   const createFolder = useCreateFolder();
+
+  const { openFile, closeTab, closeAllTabs, setActiveTab, activeTabId } =
+    useEditor(projectId);
 
   const folderContents = useFolderContents({
     projectId,
@@ -76,6 +80,7 @@ export const Tree = ({ item, level = 0, projectId }: TreeProps) => {
 
   if (item.type === "file") {
     const fileName = item.name;
+    const isActive = activeTabId === item._id;
     if (isRenaming) {
       return (
         <RenameInput
@@ -91,11 +96,13 @@ export const Tree = ({ item, level = 0, projectId }: TreeProps) => {
       <TreeItemWrapper
         item={item}
         level={level}
-        isActive={false}
-        onClick={() => {}}
-        onDoubleClick={() => {}}
+        isActive={isActive}
+        onClick={() => {
+          openFile(item._id, { pinned: true });
+        }}
         onRename={() => setIsRenaming(true)}
         onDelete={() => {
+          closeTab(item._id);
           deleteFile({
             id: item._id,
           });
@@ -198,7 +205,6 @@ export const Tree = ({ item, level = 0, projectId }: TreeProps) => {
           setIsRenaming(true);
         }}
         onDelete={() => {
-          //TODO:close tab
           deleteFile({
             id: item._id,
           });

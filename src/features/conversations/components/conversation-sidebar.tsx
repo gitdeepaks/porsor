@@ -14,11 +14,12 @@ import {
   MessageContent,
   MessageResponse,
 } from "@/components/ai-elements/message";
+
 import {
   PromptInput,
   PromptInputBody,
   PromptInputFooter,
-  PromptInputMessage,
+  type PromptInputMessage,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputTools,

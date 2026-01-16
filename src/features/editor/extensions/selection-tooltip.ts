@@ -23,11 +23,11 @@ const createTooltipForSelection = (state: EditorState): readonly Tooltip[] => {
         const addToChatButton = document.createElement("button");
         addToChatButton.textContent = "Add to chat";
         addToChatButton.className =
-          "font-sans p-1 px-2 text-muted-foreground hover:text-foreground/10 hover:bg-foreground/10 rounded-sm";
+          "font-sans p-1 px-2 text-muted-foreground hover:text-foreground/10 hover:bg-foreground/10 rounded-sm hover:text-white";
 
         const quickEditButton = document.createElement("button");
         quickEditButton.className =
-          "font-sans p-1 px-2 text-muted-foreground hover:text-foreground/10 hover:bg-foreground/10 rounded-sm gap-1 items-center";
+          "font-sans p-1 px-2 text-muted-foreground hover:text-foreground/10 hover:bg-foreground/20 hover:text-white rounded-sm gap-1 items-center";
 
         const quickEditButtonText = document.createElement("span");
         quickEditButtonText.textContent = "Quick Edit";
